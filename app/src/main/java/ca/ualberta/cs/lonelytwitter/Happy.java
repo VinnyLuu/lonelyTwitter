@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Happy extends Mood {
 
+
     public Happy(Date date) {
         this.date = date;
     }

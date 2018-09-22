@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Tweet {
+    
     protected String message;
     protected Date date;
     private ArrayList<Mood> moodList;
