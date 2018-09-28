@@ -47,6 +47,7 @@ public class LonelyTwitterActivity extends Activity {
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				tweets.removeAll(tweets);
+
 				adapter.notifyDataSetChanged();
 				saveInFile();
 			}
