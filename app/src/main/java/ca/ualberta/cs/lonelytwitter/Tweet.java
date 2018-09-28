@@ -1,39 +1,40 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Tweet {
-    
-    protected String message;
-    protected Date date;
-    private ArrayList<Mood> moodList;
+public class Tweet implements Tweetable {
 
-    public void setMessage(String message) throws TooLongTweetException {
-        if (this.message.length()>140) {
+    private Date date;
+    private String message;
+    private static final Integer MAX_CHARS = 140;
+
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) throws TweetTooLongException {
+        if (message.length() <= this.MAX_CHARS) {
             this.message = message;
         } else {
-            throw new TooLongTweetException();
+            throw new TweetTooLongException();
         }
     }
 
-    public void addMood(Mood mood){
-        this.moodList.add(mood);
-    }
-
-    public void setDate(Date date){
+    public void setDate(Date date) {
         this.date = date;
-
     }
-    public String getMessage(){
-        return this.message;
 
-    }
-    public Date getDate(){
+    public Date getDate() {
         return this.date;
-
     }
 
-    public abstract Boolean isImportant();
+    //No method body implemented! We leave that up to the subclasses (they MUST implement it)
+    public Boolean isImportant() {
+        return false;
+    }
 
+    public String toString() {
+        return this.date.toString() + " | " + this.message;
+    }
 }
